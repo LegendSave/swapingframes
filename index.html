@@ -7,12 +7,13 @@
   </head>
   <body>
     <canvas></canvas>
-    <img src="qr.png" style="visibility: hidden">
+    <img src="qr.png" style="visibility: hidden" id="qr">
     <script>
       var canvas = document.querySelector('canvas');
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
       var c = canvas.getContext("2d");
+      var qr = document.getElementById("qr");
       c.beginPath();
       c.lineWidth = 20;
       c.strokeStyle = "blue";
@@ -26,6 +27,9 @@
       c.moveTo(0, canvas.height);
       c.lineTo(window.innerWidth, window.innerHeight);
       c.stroke();
+      c.beginPath();
+      c.drawImage(qr, 20, 20);
+      c.fill();
     </script>
   </body>
 </html>
