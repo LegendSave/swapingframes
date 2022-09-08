@@ -15,7 +15,6 @@
       var c = canvas.getContext("2d");
       var qr = document.getElementById("qr");
       var halfW = window.innerWidth / 2;
-      var halfH = window.innerHeight / 2;
       c.beginPath();
       c.lineWidth = 20;
       c.strokeStyle = "blue";
@@ -30,7 +29,7 @@
       c.lineTo(window.innerWidth, window.innerHeight);
       c.stroke();
       c.beginPath();
-      c.drawImage(qr, halfW, halfH);
+      c.drawImage(qr, halfW, 30);
       c.fill();
     </script>
   </body>
