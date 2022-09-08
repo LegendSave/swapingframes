@@ -38,8 +38,12 @@
       setTimeout(e => {
         c.beginPath();
         if (track == 1){
-          c.drawImage(game, halfW, 30);
+          c.drawImage(qr, halfW, 30);
           track = 0;
+        }        
+        if(track == 0){
+          c.drawImage(game, halfW, 30);
+          track = 1;
         }
         c.fill();
         return e;
