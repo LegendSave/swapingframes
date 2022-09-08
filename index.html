@@ -8,13 +8,16 @@
   <body>
     <canvas></canvas>
     <img src="qr.png" style="visibility: hidden" id="qr">
+    <img src="gaming.png" style="visibility: hidden" id="game">
     <script>
       var canvas = document.querySelector('canvas');
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
       var c = canvas.getContext("2d");
       var qr = document.getElementById("qr");
-      var halfW = window.innerWidth / 2;
+      var game = document.getElementById("game");
+      var halfW = window.innerWidth / 2 - 90;
+      var track = 0;
       c.beginPath();
       c.lineWidth = 20;
       c.strokeStyle = "blue";
@@ -29,8 +32,21 @@
       c.lineTo(window.innerWidth, window.innerHeight);
       c.stroke();
       c.beginPath();
-      c.drawImage(qr, halfW - 90, 30);
+      c.drawImage(qr, halfW, 30);
       c.fill();
+
+      setTimeout(e => {
+        c.beginPath();
+        if(track == 0){
+          c.drawImage(qr, halfW, 30);
+          track = 1;
+        }
+        if (track == 1){
+          c.drawImage(game, halfW, 30);
+          track = 0;
+        }
+        c.fill();
+      }, 3000);
     </script>
   </body>
 </html>
