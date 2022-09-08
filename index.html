@@ -1,1 +1,30 @@
-
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      body{margin: 0px;}
+    </style>
+  </head>
+  <body>
+    <canvas></canvas>
+    <script>
+      var canvas = document.querySelector("canvas");
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      var c = canvas.getContext("2d");
+      c.beginPath();
+      c.lineWidth = 20;
+      c.strokeStyle = "blue";
+      c.moveTo(0, 0);
+      c.lineTo(window.innerWidth, 0);
+      c.moveTo(canvas.width, 0);
+      c.lineTo(canvas.height, canvas.width + 1000000);
+      c.lineTo(0, 0);
+      c.stroke();
+      c.beginPath();
+      c.moveTo(0, canvas.height);
+      c.lineTo(window.innerWidth, window.innerHeight);
+      c.stroke();
+    </script>
+  </body>
+</html>
