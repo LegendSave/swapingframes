@@ -1,53 +1,32 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <style>
-      body{margin: 0px;}
-    </style>
-  </head>
-  <body>
-    <canvas></canvas>
-    <img src="qr.png" style="visibility: hidden" id="qr">
-    <img src="gaming.png" style="visibility: hidden" id="game">
-    <script>
-      var canvas = document.querySelector('canvas');
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-      var c = canvas.getContext("2d");
-      var qr = document.getElementById("qr");
-      var game = document.getElementById("game");
-      var halfW = window.innerWidth / 2 - 90;
-      var track = 0;
-      c.beginPath();
-      c.lineWidth = 20;
-      c.strokeStyle = "blue";
-      c.moveTo(0, 0);
-      c.lineTo(window.innerWidth, 0);
-      c.moveTo(canvas.width, 0);
-      c.lineTo(canvas.height, canvas.width + 1000000);
-      c.lineTo(0, 0);
-      c.stroke();
-      c.beginPath();
-      c.moveTo(0, canvas.height);
-      c.lineTo(window.innerWidth, window.innerHeight);
-      c.stroke();
-      c.beginPath();
-      c.drawImage(qr, halfW, 30);
-      c.fill();
 
-      setTimeout(e => {
-        c.beginPath();
-        if (track == 1){
-          c.drawImage(qr, halfW, 30);
-          track = 0;
-        }        
-        if(track == 0){
-          c.drawImage(game, halfW, 30);
-          track = 1;
-        }
-        c.fill();
-        return e;
-      }, 3000);
-    </script>
-  </body>
+<html>
+   <head>
+      <title>change picture</title>
+      <script type = "text/javascript">
+          function displayNextImage() {
+              x = (x === images.length - 1) ? 0 : x + 1;
+              document.getElementById("img").src = images[x];
+          }
+
+          function displayPreviousImage() {
+              x = (x <= 0) ? images.length - 1 : x - 1;
+              document.getElementById("img").src = images[x];
+          }
+
+          function startTimer() {
+              setInterval(displayNextImage, 3000);
+          }
+
+          var images = [], x = -1;
+          images[0] = "qr.png";
+          images[1] = "gaming.png";
+          images[2] = "Screenshot 2022-08-24 9.18.14 AM.png";
+      </script>
+   </head>
+  <body onload = "startTimer()">
+       <img id="img" src="qr.png"/>
+       <button type="button" onclick="displayPreviousImage()">Previous</button>
+       <button type="button" onclick="displayNextImage()">Next</button>
+   </body>
 </html>
